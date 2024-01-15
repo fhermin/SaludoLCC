@@ -5,7 +5,7 @@ import datetime
 from pyowm.owm import OWM
 
 from pyowm.utils.config import get_default_config
-
+import pandas as pd
 import cv2
 from deepface import DeepFace
 import time
@@ -208,18 +208,36 @@ def detect_faces():
 
     if not face_detected:
         res = DeepFace.find(frame, db_path='Database', enforce_detection=False, model_name='Facenet512')
+        print("Debug - res:", res)
+        print("Debug - asa:", res[0]['target_x'])
+        # Supongamos que 'res' es la variable que contiene la tabla de resultados
+        # Extraer el primer diccionario de la lista
+       # Supongamos que 'res' es la variable que contiene la lista de resultados
 
-        if len(res[0]['identity']) > 0:
-            name = res[0]['identity'][0].split('/')[1].split('\\')[1]
-            print(name)
-            cv2.putText(frame, name, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-            face_detected = True
-            time_face_detected = time.time()
-            name_label.configure(text=f"Bienvenido {name}")
-            name_label.place(relx=0.5, rely=0.85, anchor="center")  # Adjust rely value to control vertical position
-        else:
-            face_detected = False
-            name_label.place_forget()
+        # Extraer el primer diccionario de la lista
+        primer_diccionario = res[0]
+
+        # Verificar si todos los valores en el primer diccionario son mayores que cero
+        todos_mayor_que_cero = all(value.iloc[0] > 0 if isinstance(value, pd.Series) and not value.empty else False for key, value in primer_diccionario.items() if key != 'identity')
+
+       
+
+        if todos_mayor_que_cero:
+            identity_series = res[0]['identity']
+            print("Pipo :",identity_series)
+            if not identity_series.empty and len(identity_series) > 0:
+                photo_path = identity_series.iloc[0]
+                nombre_carpeta = os.path.basename(os.path.dirname(photo_path))
+                name = nombre_carpeta
+                print(name)
+                cv2.putText(frame, name, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                face_detected = True
+                time_face_detected = time.time()
+                name_label.configure(text=f"Bienvenido {name}")
+                name_label.place(relx=0.5, rely=0.85, anchor="center")  # Adjust rely value to control vertical position
+            else:
+                face_detected = False
+                name_label.place_forget()
 
     else:
         current_time = time.time()

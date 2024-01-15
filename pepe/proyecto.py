@@ -38,15 +38,23 @@ def detect_faces():
 
     if not face_detected:
         res = DeepFace.find(frame, db_path='Database', enforce_detection=False, model_name='Facenet512')
+        print("Debug - res:", res)
 
-        if len(res[0]['identity']) > 0:
-            name = res[0]['identity'][0].split('/')[1].split('\\')[1]
-            print(name)
-            cv2.putText(frame, name, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-            face_detected = True
-            time_face_detected = time.time()
-            name_label.config(text=f"Bienvenido {name}")
-            name_label.pack()
+        if res and len(res) > 0 and 'identity' in res[0]:
+            identity_series = res[0]['identity']
+            
+            if not identity_series.empty and len(identity_series) > 0:
+                name_path = os.path.basename(identity_series.iloc[0])
+                name = name_path.split('\\')[0]
+                print(name)
+                cv2.putText(frame, name, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                face_detected = True
+                time_face_detected = time.time()
+                name_label.config(text=f"Bienvenido {name}")
+                name_label.pack()
+            else:
+                face_detected = False
+                name_label.place_forget()
 
     else:
         current_time = time.time()
@@ -60,6 +68,7 @@ def detect_faces():
     panel.img = img
     panel.config(image=img)
     root.after(10, detect_faces)
+
 
 root = tk.Tk()
 root.title("Detección de Rostros")
