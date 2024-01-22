@@ -240,7 +240,7 @@ def detect_faces():
                 name_label.place_forget()
 
     else:
-        current_time = time.time()
+        current_time = time.time()  
         if current_time - time_face_detected >= wait_time:
             face_detected = False
             name_label.place_forget()
