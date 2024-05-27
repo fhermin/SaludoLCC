@@ -1,0 +1,28 @@
+body {
+    background-color: #f0f0f0; /* Cambia esto al color de fondo que desees */
+    font-family: Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333; /* Cambia esto al color de texto que desees */
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.control-element {
+    margin-bottom: 10px;
+}
+.st-emotion-cache-13k62yr {
+    position: absolute;
+    background: rgb(124, 12, 233);
+    color: rgb(250, 250, 250);
+    inset: 0px;
+    color-scheme: dark;
+    overflow: hidden;
+}
+/* Añade más estilos según tus necesidades */
