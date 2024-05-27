@@ -1,0 +1,13 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+
+
+# testing
+pepe/Database
+pepe/ex.py
+pepe/appi.py
+# production
+
+
+# misc
