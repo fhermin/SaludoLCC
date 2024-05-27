@@ -199,10 +199,11 @@ countdown_label = customtkinter.CTkLabel(app, text="", font=('Arial', 20), ancho
 countdown_label.place(relx=0.5, rely=0.1, anchor="center")
 
 def update_video_panel():
+    global stop_faces_detected
     state, frame = cap.read()
 
-    if not state:
-        app.after(10, update_video_panel)
+    if not state or not stop_faces_detected:
+        cap.release()
         return
 
     img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -225,7 +226,7 @@ def phot():
     take_phot.place(relx=0.95, rely=0.35, anchor="ne")
 
 def detect_faces():
-    global face_detected, time_face_detected,stop_faces_detected
+    global face_detected, time_face_detected,stop_faces_detected,cap
     state, frame = cap.read()
     
     
@@ -294,9 +295,17 @@ def update_gui(frame):
     panel.grid(row=0, column=0, columnspan=2, pady=10, sticky="nsew")
     panel.place(relx=0.5, rely=0.5, anchor="center")  # Centro del panel de vide
 
+def restart_camera():
+    global cap, cap_width, cap_height
+    cap.release()
+    cap = cv2.VideoCapture(0)
+    cap.set(3, cap_width)  # Set the width
+    cap.set(4, cap_height)  # Set the height
+
+
 
 def stop_face_detection():
-    global stop_faces_detected
+    global stop_faces_detected,cap
     stop_faces_detected = True  # Toggle the variable
     
     
@@ -313,7 +322,11 @@ time_face_detected = None
 wait_time = 5  # segundos
 
 def start_face_detection():
-    global stop_faces_detected,frame_count,face_detected,time_face_detected,wait_time
+    global stop_faces_detected,cap
+    cap.release()
+    cap = cv2.VideoCapture(0)
+    cap.set(3, cap_width)  # Set the width
+    cap.set(4, cap_height)  # Set the height
     stop_faces_detected = False
     detect_faces()
 
