@@ -1,0 +1,105 @@
+
+body {
+    margin: 0px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgb(12, 249, 249);
+    background-color: rgb(250, 250, 11);
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(58, 40, 145, 0.8);
+    -webkit-font-smoothing: auto;
+}
+
+.st-emotion-cache-13k62yr {
+    position: absolute;
+    background: #edd8bb;
+    color: rgb	(21, 12, 12);
+    inset: 0px;
+    color-scheme: light;
+    overflow: hidden;
+}
+.st-emotion-cache-10trblm {
+    position: relative;
+    flex: 1 1 0%;
+    margin-left: calc(4rem);
+    color: rgb	(21, 12, 12);
+
+}
+.st-emotion-cache-1avcm0n {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 2.875rem;
+    background: rgb(251,131,81);
+    background-image: url('fotito.png'); /* Ruta de la imagen */
+    outline: none;
+    z-index: 999990;
+    display: block;
+}
+.st-emotion-cache-1avcm0n::after {
+    content: "";
+    display: block;
+    width: 50px; /* Ancho de la imagen */
+    height: 50px; /* Alto de la imagen */
+    background-image: url('fotito.png'); /* Ruta de la imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 5px; /* Posición vertical de la imagen desde arriba */
+    right: 5px; /* Posición horizontal de la imagen desde la derecha */
+    border-radius: 50%; /* Para hacer la imagen circular */
+}
+.st-emotion-cache-q8sbsg.e1nzilvr5 {
+    color: black;
+}
+h1 {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    padding: 1.25rem 0px 1rem;
+    margin: 0px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.st-emotion-cache-ul70r3 {
+    font-family: "Source Sans Pro", sans-serif;
+    margin-bottom: -1rem;
+    text-align: center;
+}
+
+.st-emotion-cache-h4xjwg {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 3.75rem;
+    background: #ef8e7d;
+    outline: none;
+    z-index: 999990;
+    display: block;
+}
+
+.st-emotion-cache-1tpl0xr {
+    font-family: "Source Sans Pro", sans-serif;
+}
+.st-emotion-cache-1qg05tj {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    visibility: visible;
+    margin-bottom: 0.25rem;
+    height: auto;
+    min-height: 1.5rem;
+    vertical-align: middle;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.st-ah {
+    width: 640px;
+}
+
