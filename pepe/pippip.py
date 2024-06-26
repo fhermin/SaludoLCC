@@ -44,7 +44,7 @@ capture_images = False  # Variable para controlar la captura de imágenes
 capture_interval = 5  # Intervalo de tiempo entre capturas en segundos
 
 customtkinter.set_appearance_mode("dark")
-customtkinter.set_default_color_theme("blue")
+customtkinter.CTkThemeManager.load_theme("blue")
 
 root = tk.Tk()
 screen_width = root.winfo_screenwidth()
