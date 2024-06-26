@@ -44,6 +44,7 @@ capture_images = False  # Variable para controlar la captura de imágenes
 capture_interval = 5  # Intervalo de tiempo entre capturas en segundos
 
 customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme("blue")
 
 root = tk.Tk()
 screen_width = root.winfo_screenwidth()
@@ -218,7 +219,6 @@ def mostrar_error_mensaje(mensaje):
     error_button.pack(pady=10)
     error_window.resizable(False, False)
     error_window.mainloop()
-
 
 def stop_capture():
     global capture_images
